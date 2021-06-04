@@ -2,15 +2,22 @@ name: Releases
 
 on:
   push:
-    tags:
-      - '*'
+    branches:
+      - main
+    paths:
+      - 'git_change_request/__init__.py'
 
 jobs:
   create-release:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
+      - name: get current version
+        run: |
+          echo "current_version=$(make show-version)" >> $GITHUB_ENV
       - uses: ncipollo/release-action@v1
         with:
+          tag: v${{ env.current_version }}
+          commit: ${{ github.sha }}
           bodyFile: "CHANGELOG.md"
           token: ${{ secrets.GITHUB_TOKEN }}

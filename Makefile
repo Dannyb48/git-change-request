@@ -35,3 +35,6 @@ bump-minor:
 
 bump-patch:
 	bumpversion patch --commit
+
+show-version:
+	@bumpversion major --list --dry-run | awk -F '=' '{print $$2}' | sed -n 1p
