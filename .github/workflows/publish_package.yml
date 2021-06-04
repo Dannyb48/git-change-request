@@ -1,8 +1,9 @@
 name: "Push the master branch to pypi when new release is created"
 
 on:
+  workflow_dispatch:
   release:
-    types: [published]
+    types: [released, published, created]
 
 jobs:
   deploy_pypi:
