@@ -1,3 +1,23 @@
+# Version 0.3.0 (2021-06-04)
+
+## New features
+* None
+
+## Enhancements
+* None
+
+## Bug Fixes
+* None
+
+## Doc Changes
+* None
+
+## Test/CI Enhancements
+* Update create_release workflow to use PAT vs the GitHub App token
+  because it does not support cascading triggering of workflows that utilize 
+  the token.
+
+
 # Version 0.2.0 (2021-06-04)
 
 ## New features
