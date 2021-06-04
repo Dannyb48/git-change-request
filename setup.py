@@ -27,7 +27,8 @@ setup(
     long_description_content_type='text/markdown',
     license='GPLv3',
     url="https://github.com/Dannyb48/git-change-request",
-    packages=find_packages(),
+    packages=find_packages(exclude=['tests*']),
+    include_package_data=True,
     install_requires=[
         'PyGithub',
         'GitPython',
