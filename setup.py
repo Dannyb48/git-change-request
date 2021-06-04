@@ -35,8 +35,8 @@ setup(
         'click'
     ],
     classifiers=[
-        "Programming Language :: Python :: 3",
-        "License :: OSI Approved :: GPLv3 License",
+        'Programming Language :: Python :: 3',
+        'License :: OSI Approved :: GNU General Public License v3 (GPLv3)',
         'Intended Audience :: Developers',
         'Topic :: Software Development :: Quality Assurance',
         'Topic :: Software Development :: Libraries :: Python Modules',
