@@ -1,3 +1,23 @@
+# Version 0.4.0 (2021-06-04)
+
+## New features
+* None
+
+## Enhancements
+* None
+
+## Bug Fixes
+* None
+
+## Doc Changes
+* None
+
+## Test/CI Enhancements
+* Removed the release trigger released/created for the publish_package
+  to avoid redundant triggers failures now that that workflows are
+  using the correct token.
+
+
 # Version 0.3.0 (2021-06-04)
 
 ## New features
