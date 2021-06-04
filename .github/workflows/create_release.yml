@@ -16,9 +16,10 @@ jobs:
         run: |
           pip install -r test-requirements.txt
           echo "current_version=$(make show-version)" >> $GITHUB_ENV
+          cat CHANGELOG.md | egrep -n "# Version" | awk -F ':' '{print $1}' | echo $(($(sed -n 2p)-3)) | xargs -d'\n' -I{} head -n {} CHANGELOG.md >> current_release.md
       - uses: ncipollo/release-action@v1
         with:
           tag: v${{ env.current_version }}
           commit: ${{ github.sha }}
-          bodyFile: "CHANGELOG.md"
+          bodyFile: "current_release.md"
           token: ${{ secrets.GITHUB_TOKEN }}
