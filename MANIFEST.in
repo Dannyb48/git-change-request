@@ -1,0 +1,8 @@
+include CHANGES LICENSE AUTHORS README.md
+exclude setup.cfg
+prune docs/
+prune tests/.cache
+prune extensions
+prune .ropeproject
+prune .git
+prune .gitignore
