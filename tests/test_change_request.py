@@ -5,8 +5,8 @@ import json
 import os
 import collections
 from git_change_request import BaseRequest, ChangeRequest
-from git_change_request.lib.exceptions import ChangeRequestException
-from git_change_request.lib.helpers.decorators import raise_and_log_exception
+from git_change_request.src.exceptions import ChangeRequestException
+from git_change_request.src.helpers.decorators import raise_and_log_exception
 
 def wrap(value):
     """
@@ -151,14 +151,14 @@ class TestChangeRequests(BaseRequest):
 class TestChangeRequest:
 
     @staticmethod
-    @mock.patch('git_change_request.lib.apis.change_request.get_change_request_plugin_class')
+    @mock.patch('git_change_request.src.apis.change_request.get_change_request_plugin_class')
     def test_work_on(mock_get_plugin):
         mock_get_plugin.return_value = TestChangeRequests
         cr = ChangeRequest(repo_url='https://github.com')
         cr.work_on(number=41)
 
     @staticmethod
-    @mock.patch('git_change_request.lib.apis.change_request.get_change_request_plugin_class')
+    @mock.patch('git_change_request.src.apis.change_request.get_change_request_plugin_class')
     def test_failed_work_on(mock_get_plugin):
         mock_get_plugin.return_value = TestChangeRequests
         cr = ChangeRequest(repo_url='https://github.com')
@@ -167,7 +167,7 @@ class TestChangeRequest:
             assert "The PR/Commit doesn't exist or your token doesn't have proper permissions." in e.value.args
 
     @staticmethod
-    @mock.patch('git_change_request.lib.apis.change_request.get_change_request_plugin_class')
+    @mock.patch('git_change_request.src.apis.change_request.get_change_request_plugin_class')
     def test_iter(mock_get_plugin):
         mock_get_plugin.return_value = TestChangeRequests
         cr = ChangeRequest(repo_url='https://github.com')
@@ -177,7 +177,7 @@ class TestChangeRequest:
             assert pr.get('number') == 41
 
     @staticmethod
-    @mock.patch('git_change_request.lib.apis.change_request.get_change_request_plugin_class')
+    @mock.patch('git_change_request.src.apis.change_request.get_change_request_plugin_class')
     def test_list(mock_get_plugin):
         mock_get_plugin.return_value = TestChangeRequests
         cr = ChangeRequest(repo_url='https://github.com')
@@ -188,7 +188,7 @@ class TestChangeRequest:
             assert pr.get('number') == 41
 
     @staticmethod
-    @mock.patch('git_change_request.lib.apis.change_request.get_change_request_plugin_class')
+    @mock.patch('git_change_request.src.apis.change_request.get_change_request_plugin_class')
     def test_fail_checkout_no_number(mock_get_plugin):
         mock_get_plugin.return_value = TestChangeRequests
         cr = ChangeRequest(repo_url='https://github.com')
@@ -196,8 +196,8 @@ class TestChangeRequest:
             cr.checkout()
 
     @staticmethod
-    @mock.patch('git_change_request.lib.apis.change_request.Repo')
-    @mock.patch('git_change_request.lib.apis.change_request.get_change_request_plugin_class')
+    @mock.patch('git_change_request.src.apis.change_request.Repo')
+    @mock.patch('git_change_request.src.apis.change_request.get_change_request_plugin_class')
     def test_checkout_number(mock_get_plugin, mock_repo):
         mock_get_plugin.return_value = TestChangeRequests
         mock_repo.return_value = "success"
@@ -205,8 +205,8 @@ class TestChangeRequest:
         cr.checkout(41)
 
     @staticmethod
-    @mock.patch('git_change_request.lib.apis.change_request.Repo')
-    @mock.patch('git_change_request.lib.apis.change_request.get_change_request_plugin_class')
+    @mock.patch('git_change_request.src.apis.change_request.Repo')
+    @mock.patch('git_change_request.src.apis.change_request.get_change_request_plugin_class')
     def test_checkout_worked_on_number(mock_get_plugin, mock_repo):
         mock_get_plugin.return_value = TestChangeRequests
         mock_repo.return_value = "success"
@@ -215,7 +215,7 @@ class TestChangeRequest:
         cr.checkout()
 
     @staticmethod
-    @mock.patch('git_change_request.lib.apis.change_request.get_change_request_plugin_class')
+    @mock.patch('git_change_request.src.apis.change_request.get_change_request_plugin_class')
     def test_get_status(mock_get_plugin):
         mock_get_plugin.return_value = TestChangeRequests
         cr = ChangeRequest(repo_url='https://github.com')
@@ -223,7 +223,7 @@ class TestChangeRequest:
         assert cr.get_status().get('status') == 'success'
 
     @staticmethod
-    @mock.patch('git_change_request.lib.apis.change_request.get_change_request_plugin_class')
+    @mock.patch('git_change_request.src.apis.change_request.get_change_request_plugin_class')
     def test_request_reviewers(mock_get_plugin):
         mock_get_plugin.return_value = TestChangeRequests
         cr = ChangeRequest(repo_url='https://github.com')
@@ -231,7 +231,7 @@ class TestChangeRequest:
         cr.request_reviewers(reviewers=['john-doe'])
 
     @staticmethod
-    @mock.patch('git_change_request.lib.apis.change_request.get_change_request_plugin_class')
+    @mock.patch('git_change_request.src.apis.change_request.get_change_request_plugin_class')
     def test_view(mock_get_plugin):
         mock_get_plugin.return_value = TestChangeRequests
         cr = ChangeRequest(repo_url='https://github.com')
