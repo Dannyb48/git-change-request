@@ -44,7 +44,7 @@ setup(
     entry_points={
         'console_scripts': ['git-cr=git_change_request.bin.change_request_cli:git_cr'],
         'git_cr_plugins': [
-            'github_request = git_change_request.lib.apis:GithubRequest'
+            'github_request = git_change_request.src.apis:GithubRequest'
         ],
 
     }

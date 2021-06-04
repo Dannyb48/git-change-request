@@ -1,6 +1,6 @@
 import click
 import json
-from ..lib import ChangeRequest
+from ..src import ChangeRequest
 
 
 @click.group(name='git-cr')
