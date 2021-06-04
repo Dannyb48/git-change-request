@@ -1,3 +1,25 @@
+# Version 0.2.0 (2021-06-04)
+
+## New features
+* None
+
+## Enhancements
+* None
+
+## Bug Fixes
+* None
+
+## Doc Changes
+* None
+
+## Test/CI Enhancements
+* Fixed the publish_package workflow to trigger manually and on 
+  release events published/created
+* Added a command to output only the recent changelog of the release
+  and add that to the github release rather than the full running
+  changelog
+
+
 # Version 0.1.0 (2021-06-03)
 
 ## New features
