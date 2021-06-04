@@ -22,4 +22,5 @@ jobs:
           tag: v${{ env.current_version }}
           commit: ${{ github.sha }}
           bodyFile: "current_release.md"
-          token: ${{ secrets.GITHUB_TOKEN }}
+          #Using my PAT because using the Github App Token does not support cascading triggering
+          token: ${{ secrets.GIT_TOKEN }}
